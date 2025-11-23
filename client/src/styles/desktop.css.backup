@@ -1,0 +1,786 @@
+/* Desktop Nothing OS Glassmorphism Styles */
+
+/* Glassmorphism Utility Classes */
+.glass-panel {
+    background: var(--desktop-glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border-subtle);
+}
+
+.glass-panel-strong {
+    background: var(--desktop-glass-bg-strong);
+    backdrop-filter: var(--glass-blur-strong);
+    -webkit-backdrop-filter: var(--glass-blur-strong);
+    border: 1px solid var(--glass-border-subtle);
+}
+
+.glass-panel-overlay {
+    background: var(--desktop-glass-bg-overlay);
+    backdrop-filter: var(--glass-blur-strong);
+    -webkit-backdrop-filter: var(--glass-blur-strong);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+/* Red Accent Utilities */
+.red-accent-border {
+    border-color: rgba(255, 0, 0, 0.3);
+}
+
+.red-accent-glow {
+    box-shadow: var(--glow-red-md);
+}
+
+.red-accent-glow-sm {
+    box-shadow: var(--glow-red-sm);
+}
+
+.red-accent-glow-lg {
+    box-shadow: var(--glow-red-lg);
+}
+
+/* Desktop-Only Display */
+@media (min-width: 768px) {
+    .desktop-only {
+        display: block;
+    }
+
+    .mobile-only {
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .desktop-only {
+        display: none !important;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+}
+
+/* Desktop Responsive Grid Layouts - Full Screen */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .song-list {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .song-list {
+        grid-template-columns: repeat(5, 1fr) !important;
+    }
+}
+
+@media (min-width: 1440px) {
+    .song-list {
+        grid-template-columns: repeat(6, 1fr) !important;
+    }
+}
+
+@media (min-width: 1920px) {
+    .song-list {
+        grid-template-columns: repeat(7, 1fr) !important;
+    }
+}
+
+/* Smooth Hover Transforms */
+.hover-scale {
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.hover-scale:hover {
+    transform: scale(1.02) translateY(-4px);
+}
+
+.hover-scale-sm {
+    transition: transform var(--transition-fast);
+}
+
+.hover-scale-sm:hover {
+    transform: scale(1.05);
+}
+
+/* Button Press Feedback */
+.press-feedback:active {
+    transform: scale(0.95);
+}
+
+/* Red Glow Hover Effect */
+.glow-on-hover {
+    transition: box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.glow-on-hover:hover {
+    box-shadow: var(--glow-red-md);
+    border-color: rgba(255, 0, 0, 0.4);
+}
+
+/* Custom Scrollbar with Red Accent */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 0, 0, 0.3);
+    border-radius: 4px;
+    transition: background var(--transition-fast);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 0, 0, 0.5);
+}
+
+/* Nothing Typography Utilities */
+.nothing-font {
+    font-family: var(--font-header);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.nothing-font-lg {
+    font-family: var(--font-header);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Performance Optimizations */
+.will-animate {
+    will-change: transform, opacity, box-shadow;
+}
+
+/* Focus States for Accessibility */
+.focus-red:focus {
+    outline: none;
+    border-color: rgba(255, 0, 0, 0.6);
+    box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.2);
+}
+
+/* Glassmorphism Card Base */
+.glass-card {
+    background: var(--glass-bg-light);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border-subtle);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base) var(--ease-smooth);
+}
+
+.glass-card:hover {
+    background: var(--glass-bg-medium);
+    border-color: rgba(255, 0, 0, 0.3);
+    box-shadow: 0 8px 32px rgba(255, 0, 0, 0.15);
+    transform: scale(1.02) translateY(-4px);
+}
+
+/* Active/Playing State */
+.glass-card.active {
+    border: 2px solid rgba(255, 0, 0, 0.6);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.3), inset 0 0 20px rgba(255, 0, 0, 0.05);
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Red Divider */
+.red-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.3), transparent);
+    margin: 24px 0;
+}
+
+/* Fade In Animation */
+.fade-in {
+    animation: fade-in 0.3s ease-out forwards;
+}
+
+/* ========================================
+   Song Grid Enhancement Styles
+   ======================================== */
+
+/* Song List Grid Container */
+.song-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 28px;
+    width: 100%;
+    padding: 32px;
+    overflow-y: auto;
+    height: calc(100vh - 80px - 100px);
+    scroll-behavior: smooth;
+}
+
+/* Responsive Grid Breakpoints - Larger Cards */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .song-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1440px) {
+    .song-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1440px) and (max-width: 1920px) {
+    .song-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 1920px) {
+    .song-list {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+/* Song Card Base Styles */
+.song-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: transparent;
+    cursor: pointer;
+    transition: all var(--anim-fast) var(--ease-smooth);
+    padding: 0;
+
+    /* Initial state for fade-in animation */
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp var(--anim-normal) var(--ease-smooth) forwards;
+
+    /* GPU acceleration */
+    will-change: transform, opacity;
+
+    /* Ensure proper display of children */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Staggered animation delays for first 20 cards */
+.song-card[data-index="0"] {
+    animation-delay: 0ms;
+}
+
+.song-card[data-index="1"] {
+    animation-delay: 30ms;
+}
+
+.song-card[data-index="2"] {
+    animation-delay: 60ms;
+}
+
+.song-card[data-index="3"] {
+    animation-delay: 90ms;
+}
+
+.song-card[data-index="4"] {
+    animation-delay: 120ms;
+}
+
+.song-card[data-index="5"] {
+    animation-delay: 150ms;
+}
+
+.song-card[data-index="6"] {
+    animation-delay: 180ms;
+}
+
+.song-card[data-index="7"] {
+    animation-delay: 210ms;
+}
+
+.song-card[data-index="8"] {
+    animation-delay: 240ms;
+}
+
+.song-card[data-index="9"] {
+    animation-delay: 270ms;
+}
+
+.song-card[data-index="10"] {
+    animation-delay: 300ms;
+}
+
+.song-card[data-index="11"] {
+    animation-delay: 330ms;
+}
+
+.song-card[data-index="12"] {
+    animation-delay: 360ms;
+}
+
+.song-card[data-index="13"] {
+    animation-delay: 390ms;
+}
+
+.song-card[data-index="14"] {
+    animation-delay: 420ms;
+}
+
+.song-card[data-index="15"] {
+    animation-delay: 450ms;
+}
+
+.song-card[data-index="16"] {
+    animation-delay: 480ms;
+}
+
+.song-card[data-index="17"] {
+    animation-delay: 510ms;
+}
+
+.song-card[data-index="18"] {
+    animation-delay: 540ms;
+}
+
+.song-card[data-index="19"] {
+    animation-delay: 570ms;
+}
+
+/* Song Card Hover State */
+.song-card:hover {
+    transform: scale(1.02) translateY(-4px);
+    border-color: rgba(255, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 8px 32px rgba(255, 0, 0, 0.15);
+}
+
+/* Song Card Active State (Currently Playing) */
+.song-card.active {
+    border: 2px solid rgba(255, 0, 0, 0.6);
+    background: rgba(255, 0, 0, 0.08);
+    animation: pulseGlow var(--anim-pulse) ease-in-out infinite;
+}
+
+.song-card.active:hover {
+    transform: scale(1.02) translateY(-4px);
+}
+
+/* Album Art Container */
+.album-art-container {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px 12px 0 0;
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Album Art Image */
+.album-art-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity var(--anim-normal) var(--ease-smooth);
+}
+
+.album-art-image.loaded {
+    opacity: 1;
+}
+
+.song-card:hover .album-art-image {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Loading State */
+.album-art-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.08) 0%,
+            rgba(255, 255, 255, 0.02) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.loading-shimmer {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.05) 50%,
+            transparent 100%);
+    animation: shimmer 1.5s infinite;
+}
+
+/* Fallback Icon */
+.album-art-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.08) 0%,
+            rgba(255, 255, 255, 0.02) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.fallback-icon {
+    font-size: 64px;
+
+    .song-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: transparent;
+        cursor: pointer;
+        transition: all var(--anim-fast) var(--ease-smooth);
+        padding: 0;
+
+        /* Initial state for fade-in animation */
+        opacity: 0;
+        transform: translateY(10px);
+        animation: fadeInUp var(--anim-normal) var(--ease-smooth) forwards;
+
+        /* GPU acceleration */
+        will-change: transform, opacity;
+
+        /* Ensure proper display of children */
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Staggered animation delays for first 20 cards */
+    .song-card[data-index="0"] {
+        animation-delay: 0ms;
+    }
+
+    .song-card[data-index="1"] {
+        animation-delay: 30ms;
+    }
+
+    .song-card[data-index="2"] {
+        animation-delay: 60ms;
+    }
+
+    .song-card[data-index="3"] {
+        animation-delay: 90ms;
+    }
+
+    .song-card[data-index="4"] {
+        animation-delay: 120ms;
+    }
+
+    .song-card[data-index="5"] {
+        animation-delay: 150ms;
+    }
+
+    .song-card[data-index="6"] {
+        animation-delay: 180ms;
+    }
+
+    .song-card[data-index="7"] {
+        animation-delay: 210ms;
+    }
+
+    .song-card[data-index="8"] {
+        animation-delay: 240ms;
+    }
+
+    .song-card[data-index="9"] {
+        animation-delay: 270ms;
+    }
+
+    .song-card[data-index="10"] {
+        animation-delay: 300ms;
+    }
+
+    .song-card[data-index="11"] {
+        animation-delay: 330ms;
+    }
+
+    .song-card[data-index="12"] {
+        animation-delay: 360ms;
+    }
+
+    .song-card[data-index="13"] {
+        animation-delay: 390ms;
+    }
+
+    .song-card[data-index="14"] {
+        animation-delay: 420ms;
+    }
+
+    .song-card[data-index="15"] {
+        animation-delay: 450ms;
+    }
+
+    .song-card[data-index="16"] {
+        animation-delay: 480ms;
+    }
+
+    .song-card[data-index="17"] {
+        animation-delay: 510ms;
+    }
+
+    .song-card[data-index="18"] {
+        animation-delay: 540ms;
+    }
+
+    .song-card[data-index="19"] {
+        animation-delay: 570ms;
+    }
+
+    /* Song Card Hover State */
+    .song-card:hover {
+        transform: scale(1.02) translateY(-4px);
+        border-color: rgba(255, 0, 0, 0.3);
+        background: rgba(255, 255, 255, 0.04);
+        box-shadow: 0 8px 32px rgba(255, 0, 0, 0.15);
+    }
+
+    /* Song Card Active State (Currently Playing) */
+    .song-card.active {
+        border: 2px solid rgba(255, 0, 0, 0.6);
+        background: rgba(255, 0, 0, 0.08);
+        animation: pulseGlow var(--anim-pulse) ease-in-out infinite;
+    }
+
+    .song-card.active:hover {
+        transform: scale(1.02) translateY(-4px);
+    }
+
+    /* Album Art Container */
+    .album-art-container {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: 12px 12px 0 0;
+        position: relative;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.02);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Album Art Image */
+    .album-art-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity var(--anim-normal) var(--ease-smooth);
+    }
+
+    .album-art-image.loaded {
+        opacity: 1;
+    }
+
+    .song-card:hover .album-art-image {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Loading State */
+    .album-art-loading {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.08) 0%,
+                rgba(255, 255, 255, 0.02) 100%);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .loading-shimmer {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.05) 50%,
+                transparent 100%);
+        animation: shimmer 1.5s infinite;
+    }
+
+    /* Fallback Icon */
+    .album-art-fallback {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.08) 0%,
+                rgba(255, 255, 255, 0.02) 100%);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .fallback-icon {
+        font-size: 64px;
+        color: rgba(255, 255, 255, 0.2);
+        opacity: 0;
+        animation: fadeIn var(--anim-normal) 0.2s var(--ease-smooth) forwards;
+    }
+
+    /* Play Indicator Overlay */
+    .play-indicator-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn var(--anim-normal) var(--ease-smooth);
+    }
+
+    .play-icon {
+        font-size: 64px;
+        color: #FF0000;
+        text-shadow: 0 0 24px rgba(255, 0, 0, 0.8);
+        animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    /* Song Info Section */
+    .song-info {
+        padding: 16px;
+        background: transparency;
+        transition: background var(--anim-fast) var(--ease-smooth);
+        min-height: 88px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 6px;
+    }
+
+    .song-card.active .song-info {
+        background: rgba(255, 0, 0, 0.05);
+    }
+
+    .song-title {
+        font-family: var(--font-body);
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 2px;
+        line-height: 1.3;
+        color: #FFFFFF;
+        transition: color var(--anim-fast) var(--ease-smooth);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
+        max-height: 39px;
+    }
+
+    .song-card.active .song-title {
+        color: #FF0000;
+    }
+
+    .song-artist {
+        font-family: var(--font-header);
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.6);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        transition: color var(--anim-fast) var(--ease-smooth);
+        line-height: 1.2;
+    }
+
+    .song-card.active .song-artist {
+        color: rgba(255, 0, 0, 0.7);
+    }
+
+    /* Add to Queue Button */
+    .add-to-queue-btn {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.85);
+        border: 1px solid rgba(255, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 20px;
+        color: #FF0000;
+        font-weight: 600;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+
+        /* Hidden by default */
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all var(--anim-fast) var(--ease-smooth);
+
+        /* Prevent layout shift */
+        pointer-events: none;
+    }
+
+    .song-card:hover .add-to-queue-btn {
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: auto;
+    }
+
+    .add-to-queue-btn:hover {
+        background: rgba(255, 0, 0, 0.2);
+        box-shadow: 0 0 16px rgba(255, 0, 0, 0.6);
+        transform: scale(1.08);
+    }
+
+    .add-to-queue-btn:active {
+        transform: scale(0.92);
+    }
+
+    /* Accessibility - Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+        .song-card {
+            animation: none;
+            opacity: 1;
+            transform: none;
+        }
+
+        .song-card:hover {
+            transform: none;
+        }
+
+        .play-icon {
+            animation: none;
+        }
+
+        .loading-shimmer {
+            animation: none;
+        }
+
+        * {
+            animation-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+        }
+    }

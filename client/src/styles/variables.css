@@ -1,0 +1,212 @@
+:root {
+    /* Colors - Nothing OS with Red Accent */
+    --bg-color: #000000;
+    --text-primary: #FFFFFF;
+    --text-secondary: #A0A0A0;
+    --text-muted: #666666;
+
+    --border-color: rgba(255, 255, 255, 0.12);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --accent-color: #FFFFFF;
+
+    /* Nothing Red Accent */
+    --nothing-red: #FF0000;
+    --nothing-red-dim: rgba(255, 0, 0, 0.6);
+    --nothing-red-subtle: rgba(255, 0, 0, 0.1);
+    --nothing-red-glow: rgba(255, 0, 0, 0.3);
+
+    /* Nothing OS Mobile Colors */
+    --nothing-black: #000000;
+    --nothing-white: #FFFFFF;
+    --nothing-gray: #666666;
+    --nothing-gray-light: #A0A0A0;
+    --nothing-border: rgba(255, 255, 255, 0.08);
+    --nothing-glass: rgba(255, 255, 255, 0.03);
+
+    /* Typography - Nothing OS */
+    --font-header: 'DotGothic16', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Typography Sizes */
+    --text-xs: 10px;
+    --text-sm: 12px;
+    --text-base: 14px;
+    --text-lg: 16px;
+    --text-xl: 20px;
+    --text-2xl: 24px;
+
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    /* Mobile Spacing */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 12px;
+    --space-lg: 16px;
+    --space-xl: 24px;
+    --space-2xl: 32px;
+
+    /* Borders */
+    --border-radius: 12px;
+    --border-width: 1px;
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+
+    /* Animations */
+    --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Animation Timing */
+    --anim-fast: 0.2s;
+    --anim-normal: 0.3s;
+    --anim-slow: 0.5s;
+    --anim-pulse: 2s;
+
+    /* Animation Easing */
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Stagger Delay */
+    --stagger-delay: 30ms;
+
+    /* Desktop-Specific Design Tokens */
+
+    /* Desktop Colors */
+    --desktop-bg: #0A0A0A;
+    --desktop-glass-bg: rgba(10, 10, 10, 0.6);
+    --desktop-glass-bg-strong: rgba(10, 10, 10, 0.7);
+    --desktop-glass-bg-overlay: rgba(10, 10, 10, 0.85);
+    --desktop-glass-border: rgba(255, 255, 255, 0.08);
+    --desktop-red-accent: rgba(255, 0, 0, 0.6);
+    --desktop-red-glow: rgba(255, 0, 0, 0.3);
+    --desktop-red-subtle: rgba(255, 0, 0, 0.1);
+
+    /* Glassmorphism */
+    --glass-blur: blur(20px);
+    --glass-blur-strong: blur(30px);
+    --glass-bg-light: rgba(255, 255, 255, 0.03);
+    --glass-bg-medium: rgba(255, 255, 255, 0.05);
+    --glass-border-subtle: rgba(255, 255, 255, 0.08);
+    --glass-border-visible: rgba(255, 255, 255, 0.12);
+
+    /* Shadows and Glows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --glow-red-sm: 0 0 12px rgba(255, 0, 0, 0.3);
+    --glow-red-md: 0 0 20px rgba(255, 0, 0, 0.4);
+    --glow-red-lg: 0 0 30px rgba(255, 0, 0, 0.5);
+
+    /* Easing Functions */
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Desktop Breakpoints */
+    --breakpoint-desktop-sm: 768px;
+    --breakpoint-desktop-md: 1024px;
+    --breakpoint-desktop-lg: 1440px;
+}
+
+/* Glassmorphism Keyframe Animations */
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Song Grid Enhancement Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 24px rgba(255, 0, 0, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+/* Glassmorphism Fallback Support */
+@supports not (backdrop-filter: blur(20px)) {
+    :root {
+        --desktop-glass-bg: rgba(10, 10, 10, 0.95);
+        --desktop-glass-bg-strong: rgba(10, 10, 10, 0.98);
+        --desktop-glass-bg-overlay: rgba(10, 10, 10, 0.98);
+    }
+}
