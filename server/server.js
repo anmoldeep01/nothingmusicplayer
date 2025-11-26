@@ -13,10 +13,29 @@ app.use(cors());
 app.use(express.json());
 
 // Serve static audio files
-const SONGS_DIR = path.join(__dirname, 'songs');
+// Serve static audio files
+// In Vercel, files might be in a different location relative to __dirname or process.cwd()
+let SONGS_DIR = path.join(__dirname, 'songs');
+
+// Fallback for Vercel structure if __dirname doesn't work as expected
 if (!fs.existsSync(SONGS_DIR)) {
-    fs.mkdirSync(SONGS_DIR);
-    console.log('Created songs directory');
+    const potentialPath = path.join(process.cwd(), 'server', 'songs');
+    if (fs.existsSync(potentialPath)) {
+        SONGS_DIR = potentialPath;
+    }
+}
+
+// Only try to create directory if we are NOT in production (local development)
+// Vercel file system is read-only
+if (process.env.NODE_ENV !== 'production') {
+    if (!fs.existsSync(SONGS_DIR)) {
+        try {
+            fs.mkdirSync(SONGS_DIR);
+            console.log('Created songs directory');
+        } catch (err) {
+            console.error('Failed to create songs directory:', err.message);
+        }
+    }
 }
 app.use('/audio', express.static(SONGS_DIR));
 
