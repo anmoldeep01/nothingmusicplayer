@@ -150,7 +150,7 @@ router.get('/', async (req, res) => {
                         const encodedId = encodeURIComponent(relativePath);
 
                         if (hasEmbeddedArt) {
-                            albumArt = `http://localhost:5000/api/songs/${encodedId}/art`;
+                            albumArt = `/api/songs/${encodedId}/art`;
                         } else if (cleaned.videoId) {
                             albumArt = getYouTubeThumbnail(cleaned.videoId);
                         }
@@ -165,7 +165,7 @@ router.get('/', async (req, res) => {
                             artist: enhanced.artist,
                             album: metadata.common.album || 'Unknown Album',
                             duration: metadata.format.duration,
-                            url: `http://localhost:5000/audio/${webPath}`,
+                            url: `/audio/${webPath}`,
                             albumArt: albumArt,
                             playlist: playlistName || 'All Songs' // Add playlist field
                         });
@@ -180,7 +180,7 @@ router.get('/', async (req, res) => {
                             id: relativePath,
                             title: enhanced.title,
                             artist: enhanced.artist,
-                            url: `http://localhost:5000/audio/${webPath}`,
+                            url: `/audio/${webPath}`,
                             albumArt: cleaned.videoId ? getYouTubeThumbnail(cleaned.videoId) : null,
                             playlist: playlistName || 'All Songs'
                         });

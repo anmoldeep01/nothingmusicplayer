@@ -52,7 +52,7 @@ export const PlayerProvider = ({ children }) => {
     const fetchSongs = async () => {
         try {
             console.log('Fetching songs from API...');
-            const res = await fetch('http://localhost:5000/api/songs');
+            const res = await fetch('/api/songs');
             console.log('API Response status:', res.status);
             const data = await res.json();
             console.log('Songs received:', data.length);

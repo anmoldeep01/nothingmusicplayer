@@ -1,0 +1,9 @@
+{
+  "name": "music-player-clean",
+  "lockfileVersion": 3,
+  "requires": true,
+  "scripts": {
+    "install-all": "npm install --prefix client && npm install --prefix server",
+    "build": "npm run build --prefix client"
+  }
+}
