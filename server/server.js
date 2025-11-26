@@ -20,6 +20,21 @@ if (!fs.existsSync(SONGS_DIR)) {
 }
 app.use('/audio', express.static(SONGS_DIR));
 
+// Debug endpoint
+app.get('/api/debug', (req, res) => {
+    const debugInfo = {
+        dirname: __dirname,
+        cwd: process.cwd(),
+        songsDir: SONGS_DIR,
+        songsDirExists: fs.existsSync(SONGS_DIR),
+        filesInSongsDir: fs.existsSync(SONGS_DIR) ? fs.readdirSync(SONGS_DIR) : 'Directory not found',
+        filesInCurrentDir: fs.readdirSync(__dirname),
+        // Try to list parent directory to see structure
+        filesInParentDir: fs.existsSync(path.join(__dirname, '..')) ? fs.readdirSync(path.join(__dirname, '..')) : 'Parent not found'
+    };
+    res.json(debugInfo);
+});
+
 // Routes
 app.use('/api/songs', require('./routes/songs'));
 app.use('/api/playlists', require('./routes/playlists'));
