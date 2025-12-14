@@ -12,6 +12,10 @@ const PORT = 5000;
 app.use(cors());
 app.use(express.json());
 
+// Serve static files from the React client
+const clientBuildPath = path.join(__dirname, '../client/dist');
+app.use(express.static(clientBuildPath));
+
 // Serve static audio files
 // Serve static audio files
 // In Vercel, files might be in a different location relative to __dirname or process.cwd()
@@ -59,7 +63,22 @@ app.get('/api/debug', (req, res) => {
 app.use('/api/songs', require('./routes/songs'));
 app.use('/api/playlists', require('./routes/playlists'));
 
+// Handle React routing, return all requests to React app
+app.get(/^(.*)$/, (req, res) => {
+    // Check if request is for API
+    if (req.path.startsWith('/api') || req.path.startsWith('/audio')) {
+        return res.status(404).json({ error: 'Not Found' });
+    }
+
+    res.sendFile(path.join(clientBuildPath, 'index.html'));
+});
+
 if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`Server running on http://localhost:${PORT}`);
+    });
+} else {
+    // In production, we also need to listen
     app.listen(PORT, () => {
         console.log(`Server running on http://localhost:${PORT}`);
     });
