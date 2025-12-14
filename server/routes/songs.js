@@ -117,6 +117,7 @@ router.get('/', async (req, res) => {
 
         // Helper to process a directory
         const processDirectory = async (dirPath, playlistName = null) => {
+            if (!fs.existsSync(dirPath)) return;
             const items = fs.readdirSync(dirPath, { withFileTypes: true });
 
             for (const item of items) {
@@ -125,8 +126,6 @@ router.get('/', async (req, res) => {
 
                 if (item.isDirectory()) {
                     // Recursively process subdirectories (playlists)
-                    // If we are already in a playlist (subfolder), we can treat nested ones as part of the same or nested
-                    // For now, let's assume 1 level deep = playlist
                     const newPlaylistName = playlistName ? `${playlistName} - ${item.name}` : item.name;
                     await processDirectory(fullPath, newPlaylistName);
                 } else if (/\.(mp3|m4a|wav|flac|ogg|aac|wma|opus|webm)$/i.test(item.name)) {
@@ -136,10 +135,10 @@ router.get('/', async (req, res) => {
                         const cleaned = cleanMetadata(item.name);
 
                         // Always use offline filename parsing for metadata
-                        console.log(`\n📝 File: ${relativePath}`);
+                        // console.log(`\n📝 File: ${relativePath}`);
                         const enhanced = await enhanceMetadata(item.name, cleaned);
 
-                        console.log(`  Parsed: "${enhanced.title}" by ${enhanced.artist}`);
+                        // console.log(`  Parsed: "${enhanced.title}" by ${enhanced.artist}`);
 
                         // Check if album art exists in MP3
                         const hasEmbeddedArt = metadata.common.picture && metadata.common.picture.length > 0;
@@ -189,10 +188,10 @@ router.get('/', async (req, res) => {
             }
         };
 
-        console.log(`\n🎵 Scanning songs directory...`);
+        // console.log(`\n🎵 Scanning songs directory...`);
         await processDirectory(SONGS_DIR);
 
-        console.log(`\n✅ Successfully processed ${songs.length} songs\n`);
+        // console.log(`\n✅ Successfully processed ${songs.length} songs\n`);
         res.json(songs);
     } catch (err) {
         console.error(err);
